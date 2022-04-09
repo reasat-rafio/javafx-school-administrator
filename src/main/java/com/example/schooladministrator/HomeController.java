@@ -20,6 +20,8 @@ public class HomeController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(path)));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
+        String css = Objects.requireNonNull(this.getClass().getResource("style.css")).toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.show();
     }

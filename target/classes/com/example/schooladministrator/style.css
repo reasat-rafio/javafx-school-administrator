@@ -8,3 +8,13 @@
 .button:pressed {
     -fx-background-color : #f68b1f;
 }
+
+.text-field {
+    -fx-background-color:  #ededed;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 0);
+}
+.text-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-background ;
+}
