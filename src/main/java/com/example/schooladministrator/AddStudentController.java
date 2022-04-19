@@ -1,10 +1,13 @@
 package com.example.schooladministrator;
 
+import com.example.schooladministrator.Student.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
+import java.io.*;
 
 public class AddStudentController {
     @FXML
@@ -39,7 +42,7 @@ public class AddStudentController {
         errLabel.setText(" ");
     }
 
-    public void submitAction(ActionEvent e) {
+    public void submitAction(ActionEvent e) throws IOException {
         boolean firstNameIsEmpty =  firstName.getText().length() == 0;
         boolean lastNameIsEmpty =  lastName.getText().length() == 0;
         boolean studentIDIsEmpty =  studentId.getText().length() == 0;
@@ -47,17 +50,23 @@ public class AddStudentController {
         boolean birthdateIsEmpty =  birthdate.getValue() == null;
         boolean studentAgeIsEmpty =  studentAge.getText().length() == 0;
 
+//?      FLAG TO CHECK IF ANY OF THE FIELDS ARE EMPTY
         boolean isSubmitAble =
                 !firstNameIsEmpty && !lastNameIsEmpty
                         && !studentIDIsEmpty && !studentClassIsEmpty
                         && !birthdateIsEmpty && !studentAgeIsEmpty;
 
         if(isSubmitAble) {
-            System.out.println("Can Submit");
-
+            Student std = new Student(
+                    firstName.getText(),lastName.getText(),
+                    studentId.getText(), studentAge.getText(),
+                    studentClass.getText(),  String.valueOf(birthdate.getValue()));
+            FileIO.saveToAFile(std);
         } else {
+// ->            ERROR MESSAGE
             if(firstNameIsEmpty)
                  ErrMessageController(firstNameErrMsg, "First Name Is Required");
+// ->           CLEAN UP
              else ErrMessageController(firstNameErrMsg);
              if(lastNameIsEmpty)
                  ErrMessageController(lastNameErrMsg, "Last Name Is Required");

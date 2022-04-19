@@ -17,6 +17,8 @@ public class Student {
         this.birthdate = birthdate;
     }
 
+
+
     public String getFirstName() {
         return firstName;
     }
@@ -67,13 +69,13 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", studentId='" + studentId + '\'' +
                 ", studentAge='" + studentAge + '\'' +
                 ", studentClass='" + studentClass + '\'' +
                 ", birthdate='" + birthdate + '\'' +
-                '}';
+                '}' + "\n";
     }
 }
