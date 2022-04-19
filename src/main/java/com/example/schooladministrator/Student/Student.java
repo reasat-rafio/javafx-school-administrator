@@ -1,6 +1,8 @@
 package com.example.schooladministrator.Student;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
     private String firstName;
     private String lastName;
     private String studentId;

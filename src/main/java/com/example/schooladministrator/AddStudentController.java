@@ -42,7 +42,7 @@ public class AddStudentController {
         errLabel.setText(" ");
     }
 
-    public void submitAction(ActionEvent e) throws IOException {
+    public void submitAction(ActionEvent e) throws IOException, ClassNotFoundException {
         boolean firstNameIsEmpty =  firstName.getText().length() == 0;
         boolean lastNameIsEmpty =  lastName.getText().length() == 0;
         boolean studentIDIsEmpty =  studentId.getText().length() == 0;
@@ -61,7 +61,11 @@ public class AddStudentController {
                     firstName.getText(),lastName.getText(),
                     studentId.getText(), studentAge.getText(),
                     studentClass.getText(),  String.valueOf(birthdate.getValue()));
-            FileIO.saveToAFile(std);
+//            FileIO.saveToAFile(std);
+//            FileIO.readToAFile();
+//            FileIO.checkStudentIdAlreadyExist();
+            FileIO.saveObjToAFile(std);
+            FileIO.readObjToAFile();
         } else {
 // ->            ERROR MESSAGE
             if(firstNameIsEmpty)

@@ -1,60 +1,64 @@
-package com.example.schooladministrator;
-
-
-import com.example.schooladministrator.Student.Student;
+package com.example.schooladministrator.Student;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
-public class FileIO {
-    public static void checkStudentIdAlreadyExist() {
-        System.out.println("");
+class Demo implements java.io.Serializable {
+    public int a;
+    public String b;
+
+    // Default constructor
+    public Demo(int a, String b)
+    {
+        this.a = a;
+        this.b = b;
     }
 
-    public static void saveObjToAFile(Student student) throws IOException {
+}
+
+
+public class Test {
+    public static void main(String[] args) {
+        Demo object = new Demo(1, "geeksforgeeks");
+        String filename = "file.ser";
+
         // Serialization
         try {
-            ArrayList<Student> savedStudents = new ArrayList<Student>();
             //Saving of object in a file
-            FileOutputStream file = new FileOutputStream("student.ser");
+            FileOutputStream file = new FileOutputStream(filename);
             ObjectOutputStream out = new ObjectOutputStream(file);
-            savedStudents.add(student);
 
             // Method for serialization of object
-            out.writeObject(savedStudents);
+            out.writeObject(object);
 
             out.close();
             file.close();
+
             System.out.println("Object has been serialized");
+
         }
 
         catch(IOException ex) {
             System.out.println("IOException is caught");
         }
 
-    }
 
-    public static void readObjToAFile() throws IOException, ClassNotFoundException, NotSerializableException {
-        ArrayList<Student> students = null;
+        Demo object1 = null;
+
         // Deserialization
         try {
             // Reading the object from a file
-            FileInputStream file = new FileInputStream("student.ser");
+            FileInputStream file = new FileInputStream(filename);
             ObjectInputStream in = new ObjectInputStream(file);
 
             // Method for deserialization of object
-            students = (ArrayList<Student>)in.readObject();
+            object1 = (Demo)in.readObject();
 
             in.close();
             file.close();
 
-            for(Student std: students){
-                System.out.println(std);
-            }
-
             System.out.println("Object has been deserialized ");
-
+            System.out.println("a = " + object1.a);
+            System.out.println("b = " + object1.b);
         }
 
         catch(IOException ex) {
@@ -64,6 +68,8 @@ public class FileIO {
         catch(ClassNotFoundException ex) {
             System.out.println("ClassNotFoundException is caught");
         }
-    }
 
+    }
 }
+
+
