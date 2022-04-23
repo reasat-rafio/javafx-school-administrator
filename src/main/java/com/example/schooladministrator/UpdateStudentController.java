@@ -15,6 +15,7 @@ import javax.security.auth.callback.Callback;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class UpdateStudentController implements Initializable {
@@ -39,7 +40,13 @@ public class UpdateStudentController implements Initializable {
     @FXML
     private TableColumn<Student, Button> removeCol;
 
+    ArrayList<Student> students;
+
     ObservableList<Student> list = FXCollections.observableArrayList();
+
+    public UpdateStudentController() throws IOException, ClassNotFoundException {
+        this.students = FileIO.getAllTheStudents();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -65,6 +72,23 @@ public class UpdateStudentController implements Initializable {
         }));
 
         removeCol.setCellFactory(ActionButtonTableCell.<Student>forTableColumn("Remove", (Student p) -> {
+            int selectedStudentsIndex = 0;
+
+            for(int i = 0; i<=students.size(); i++){
+                if(Objects.equals(students.get(i).getStudentId(), p.getStudentId())){
+                    selectedStudentsIndex = i;
+                    break;
+                }
+            }
+
+            students.remove(selectedStudentsIndex);
+
+            try {
+                FileIO.saveStudents(students);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
             studentTable.getItems().remove(p);
             return p;
         }));
