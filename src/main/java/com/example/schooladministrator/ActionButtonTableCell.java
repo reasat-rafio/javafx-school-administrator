@@ -34,7 +34,7 @@ public class ActionButtonTableCell<S> extends TableCell<S, Button> {
                 try {
                     System.out.println("try");
                     function.apply(goToEditPage(e));
-                } catch (IOException ex) {
+                } catch (IOException | ClassNotFoundException ex) {
                     System.out.println("CATCh");
                     throw new RuntimeException(ex);
                 }
@@ -47,7 +47,7 @@ public class ActionButtonTableCell<S> extends TableCell<S, Button> {
         return (S) getTableView().getItems().get(getIndex());
     }
 
-    public S goToEditPage(ActionEvent e) throws IOException {
+    public S goToEditPage(ActionEvent e) throws IOException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("update-single-student.fxml"));
         Parent root = (Parent) loader.load();
         UpdateSingleStudentController controller = loader.getController();
