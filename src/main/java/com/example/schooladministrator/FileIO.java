@@ -2,68 +2,71 @@ package com.example.schooladministrator;
 
 
 import com.example.schooladministrator.Student.Student;
+import javafx.scene.control.Alert;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FileIO {
+
+    static String filename = "student.ser";
+
     public static void checkStudentIdAlreadyExist() {
         System.out.println("");
     }
 
-    public static void saveObjToAFile(Student student) throws IOException {
-        // Serialization
-        try {
-            ArrayList<Student> savedStudents = new ArrayList<Student>();
-            //Saving of object in a file
-            FileOutputStream file = new FileOutputStream("student.ser");
+    public static  void saveStudents (Student std) throws IOException, ClassNotFoundException {
+
+        boolean studentExist = false;
+        std.setCgpa("null");
+        try{
+            ArrayList<Student> students =  getAllTheStudents();
+
+        for(Student student: students){
+            if (student.getStudentId().equals(std.getStudentId())) {
+                studentExist = true;
+                break;
+            }
+        }
+
+        if(studentExist){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Same student Id already exist");
+            alert.showAndWait();
+        } else {
+            FileOutputStream file = new FileOutputStream(filename);
             ObjectOutputStream out = new ObjectOutputStream(file);
-            savedStudents.add(student);
+
+            students.add(std);
 
             // Method for serialization of object
-            out.writeObject(savedStudents);
+            out.writeObject(students);
 
             out.close();
             file.close();
+
             System.out.println("Object has been serialized");
         }
-
-        catch(IOException ex) {
+    }   catch(IOException ex) {
             System.out.println("IOException is caught");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
-
     }
 
-    public static void readObjToAFile() throws IOException, ClassNotFoundException, NotSerializableException {
+    public static ArrayList<Student> getAllTheStudents() throws IOException, ClassNotFoundException {
+
         ArrayList<Student> students = null;
-        // Deserialization
-        try {
-            // Reading the object from a file
-            FileInputStream file = new FileInputStream("student.ser");
-            ObjectInputStream in = new ObjectInputStream(file);
+        // Reading the object from a file
+        FileInputStream file = new FileInputStream(filename);
+        ObjectInputStream in = new ObjectInputStream(file);
 
-            // Method for deserialization of object
-            students = (ArrayList<Student>)in.readObject();
+        // Method for deserialization of object
+        students = (ArrayList<Student>) in.readObject();
 
-            in.close();
-            file.close();
+        in.close();
+        file.close();
 
-            for(Student std: students){
-                System.out.println(std);
-            }
-
-            System.out.println("Object has been deserialized ");
-
-        }
-
-        catch(IOException ex) {
-            System.out.println("IOException is caught");
-        }
-
-        catch(ClassNotFoundException ex) {
-            System.out.println("ClassNotFoundException is caught");
-        }
+        return students;
     }
-
 }

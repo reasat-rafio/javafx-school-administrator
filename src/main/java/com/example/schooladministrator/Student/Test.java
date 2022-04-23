@@ -19,7 +19,7 @@ class Demo implements java.io.Serializable {
 public class Test {
     public static void main(String[] args) {
         Demo object = new Demo(1, "geeksforgeeks");
-        String filename = "file.ser";
+        String filename = "student.ser";
 
         // Serialization
         try {

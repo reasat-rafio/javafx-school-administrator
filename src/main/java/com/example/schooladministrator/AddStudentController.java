@@ -61,11 +61,8 @@ public class AddStudentController {
                     firstName.getText(),lastName.getText(),
                     studentId.getText(), studentAge.getText(),
                     studentClass.getText(),  String.valueOf(birthdate.getValue()));
-//            FileIO.saveToAFile(std);
-//            FileIO.readToAFile();
-//            FileIO.checkStudentIdAlreadyExist();
-            FileIO.saveObjToAFile(std);
-            FileIO.readObjToAFile();
+            FileIO.saveStudents(std);
+            FileIO.getAllTheStudents();
         } else {
 // ->            ERROR MESSAGE
             if(firstNameIsEmpty)

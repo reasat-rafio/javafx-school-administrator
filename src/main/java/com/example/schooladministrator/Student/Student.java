@@ -9,6 +9,9 @@ public class Student implements Serializable {
     private String studentAge;
     private String studentClass;
     private String birthdate;
+    private String cgpa;
+
+
 
     public Student(String firstName, String lastName, String studentId, String studentAge, String studentClass, String birthdate) {
         this.firstName = firstName;
@@ -18,8 +21,6 @@ public class Student implements Serializable {
         this.studentClass = studentClass;
         this.birthdate = birthdate;
     }
-
-
 
     public String getFirstName() {
         return firstName;
@@ -67,6 +68,14 @@ public class Student implements Serializable {
 
     public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
+    }
+
+    public String getCgpa() {
+        return cgpa;
+    }
+
+    public void setCgpa(String cgpa) {
+        this.cgpa = cgpa;
     }
 
     @Override

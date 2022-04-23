@@ -6,4 +6,8 @@ module com.example.schooladministrator {
 
     opens com.example.schooladministrator to javafx.fxml;
     exports com.example.schooladministrator;
+
+    opens com.example.schooladministrator.Student to javafx.fxml;
+
+    exports com.example.schooladministrator.Student;
 }
