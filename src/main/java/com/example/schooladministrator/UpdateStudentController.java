@@ -34,7 +34,10 @@ public class UpdateStudentController implements Initializable {
     private TableColumn<Student, String> cgpaCol;
 
     @FXML
-    private TableColumn<Student, Button> actionCol;
+    private TableColumn<Student, Button> editCol;
+
+    @FXML
+    private TableColumn<Student, Button> removeCol;
 
     ObservableList<Student> list = FXCollections.observableArrayList();
 
@@ -56,7 +59,12 @@ public class UpdateStudentController implements Initializable {
         cgpaCol.setCellValueFactory(new PropertyValueFactory<Student, String>("cgpa"));
 //        actionCol.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
 
-        actionCol.setCellFactory(ActionButtonTableCell.<Student>forTableColumn("Remove", (Student p) -> {
+        editCol.setCellFactory(ActionButtonTableCell.<Student>forTableColumn("Edit", (Student p) -> {
+            studentTable.getItems().remove(p);
+            return p;
+        }));
+
+        removeCol.setCellFactory(ActionButtonTableCell.<Student>forTableColumn("Remove", (Student p) -> {
             studentTable.getItems().remove(p);
             return p;
         }));
