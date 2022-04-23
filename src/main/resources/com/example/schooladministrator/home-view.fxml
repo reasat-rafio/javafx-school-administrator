@@ -6,10 +6,19 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="797.0" prefWidth="1110.0" style="-fx-background-color: #ededed;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.schooladministrator.HomeController">
    <children>
-      <Pane prefHeight="209.0" prefWidth="1110.0" style="-fx-background-color: #f68b1f;" />
+      <Pane prefHeight="209.0" prefWidth="1110.0" style="-fx-background-color: #f68b1f;">
+         <children>
+            <Text fill="WHITE" layoutX="38.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="School Administrator">
+               <font>
+                  <Font name="Bitstream Vera Sans Bold" size="47.0" />
+               </font>
+            </Text>
+         </children></Pane>
        <GridPane layoutX="168.0" layoutY="264.0" prefHeight="454.0" prefWidth="774.0" style="-fx-hgap: 10; -fx-vgap: 10;">
            <columnConstraints>
                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -22,7 +31,7 @@
            <children>
                <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="280.0" prefWidth="483.0" style="-fx-background-color: #fff;" stylesheets="@../java/com/example/schooladministrator/style.css" text="Home" />
                <Button contentDisplay="TOP" layoutX="11.0" layoutY="11.0" mnemonicParsing="false" onAction="#redirectToViewInfoPage" prefHeight="280.0" prefWidth="483.0" style="-fx-background-color: #fff;" stylesheets="@../java/com/example/schooladministrator/style.css" text="View Info" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-               <Button contentDisplay="TOP" layoutX="11.0" layoutY="11.0" mnemonicParsing="false" onAction="#redirectToUpdateInfoPage" prefHeight="280.0" prefWidth="483.0" style="-fx-background-color: #fff;" stylesheets="@../java/com/example/schooladministrator/style.css" text="Update Info" GridPane.rowIndex="1" />
+               <Button contentDisplay="TOP" layoutX="11.0" layoutY="11.0" mnemonicParsing="false" onAction="#redirectToUpdateInfoPage" prefHeight="280.0" prefWidth="483.0" style="-fx-background-color: #fff;" stylesheets="@../java/com/example/schooladministrator/style.css" text="Studnt List" GridPane.rowIndex="1" />
                <Button contentDisplay="TOP" layoutX="397.0" layoutY="11.0" mnemonicParsing="false" onAction="#redirectToAddStudentPage" prefHeight="280.0" prefWidth="483.0" style="-fx-background-color: #fff;" stylesheets="@../java/com/example/schooladministrator/style.css" text="Add New Student" GridPane.columnIndex="1" />
            </children>
        </GridPane>
