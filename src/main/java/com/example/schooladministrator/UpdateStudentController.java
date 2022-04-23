@@ -10,6 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -35,11 +36,14 @@ public class UpdateStudentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        loadData();
+        try {
+            loadData();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    private  void loadData(){
+    private  void loadData() throws IOException, ClassNotFoundException {
         idCol.setCellValueFactory(new PropertyValueFactory<Student, String>("studentId"));
         nameCol.setCellValueFactory(new PropertyValueFactory<Student, String>("firstName"));
         birthCol.setCellValueFactory(new PropertyValueFactory<Student, String>("birthdate"));
@@ -47,10 +51,9 @@ public class UpdateStudentController implements Initializable {
         classCol.setCellValueFactory(new PropertyValueFactory<Student, String>("studentClass"));
         cgpaCol.setCellValueFactory(new PropertyValueFactory<Student, String>("cgpa"));
 
-
-//        ArrayList<Student> allStudents = FileIO.getAllTheStudents();
-//        System.out.println(allStudents);
-//        list.addAll(allStudents);
+        ArrayList<Student> allStudents = FileIO.getAllTheStudents();
+        System.out.println(allStudents);
+        list.addAll(allStudents);
         studentTable.setItems(list);
     }
 }
