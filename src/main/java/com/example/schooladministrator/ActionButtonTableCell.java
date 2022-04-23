@@ -3,6 +3,8 @@ package com.example.schooladministrator;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.function.Function;
+
+import com.example.schooladministrator.Student.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,7 +48,11 @@ public class ActionButtonTableCell<S> extends TableCell<S, Button> {
     }
 
     public S goToEditPage(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("update-single-student.fxml")));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("update-single-student.fxml"));
+        Parent root = (Parent) loader.load();
+        UpdateSingleStudentController controller = loader.getController();
+
+
         Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         String css = Objects.requireNonNull(this.getClass().getResource("style.css")).toExternalForm();
@@ -55,6 +61,7 @@ public class ActionButtonTableCell<S> extends TableCell<S, Button> {
         stage.show();
         getTableView().getItems();
         getIndex();
+        controller.init((Student) getTableView().getItems().get(getIndex()));
         return (S) getTableView().getItems().get(getIndex());
     }
 

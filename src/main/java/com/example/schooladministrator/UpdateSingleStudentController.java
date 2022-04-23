@@ -35,4 +35,7 @@ public class UpdateSingleStudentController {
     @FXML
     private Label birthdateErrMsg;
 
+    public void init(Student std) {
+
+    }
 }
