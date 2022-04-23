@@ -5,11 +5,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javax.security.auth.callback.Callback;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,8 +33,10 @@ public class UpdateStudentController implements Initializable {
     @FXML
     private TableColumn<Student, String> cgpaCol;
 
-    ObservableList<Student> list = FXCollections.observableArrayList();
+    @FXML
+    private TableColumn<Student, Button> actionCol;
 
+    ObservableList<Student> list = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -50,6 +54,12 @@ public class UpdateStudentController implements Initializable {
         ageCol.setCellValueFactory(new PropertyValueFactory<Student, String>("studentAge"));
         classCol.setCellValueFactory(new PropertyValueFactory<Student, String>("studentClass"));
         cgpaCol.setCellValueFactory(new PropertyValueFactory<Student, String>("cgpa"));
+//        actionCol.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
+
+        actionCol.setCellFactory(ActionButtonTableCell.<Student>forTableColumn("Remove", (Student p) -> {
+            studentTable.getItems().remove(p);
+            return p;
+        }));
 
         ArrayList<Student> allStudents = FileIO.getAllTheStudents();
         System.out.println(allStudents);
