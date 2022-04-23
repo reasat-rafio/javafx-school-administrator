@@ -70,8 +70,7 @@ public class AddStudentController {
 // ->           CLEAN UP
              else ErrMessageController(firstNameErrMsg);
 
-             if(lastNameIsEmpty)
-                 ErrMessageController(lastNameErrMsg, "Last Name Is Required");
+             if(lastNameIsEmpty) ErrMessageController(lastNameErrMsg, "Last Name Is Required");
              else ErrMessageController(lastNameErrMsg);
              if(studentAgeIsEmpty)
                  ErrMessageController(studentAgeErrMsg, "Age Is Required");

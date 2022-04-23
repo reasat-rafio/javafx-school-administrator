@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class HomeController {
     @FXML
-    private Stage stage;
+    private static Stage stage;
 
 
     public void sceneSwitcher(String path, ActionEvent e) throws IOException {

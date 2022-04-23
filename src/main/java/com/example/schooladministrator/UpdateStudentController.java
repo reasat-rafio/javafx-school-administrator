@@ -3,13 +3,19 @@ package com.example.schooladministrator;
 import com.example.schooladministrator.Student.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import javax.security.auth.callback.Callback;
 import java.io.IOException;
@@ -66,12 +72,11 @@ public class UpdateStudentController implements Initializable {
         cgpaCol.setCellValueFactory(new PropertyValueFactory<Student, String>("cgpa"));
 //        actionCol.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
 
-        editCol.setCellFactory(ActionButtonTableCell.<Student>forTableColumn("Edit", (Student p) -> {
-            studentTable.getItems().remove(p);
+        editCol.setCellFactory(ActionButtonTableCell.<Student>forTableColumn("Edit", true, (Student p) -> {
             return p;
         }));
 
-        removeCol.setCellFactory(ActionButtonTableCell.<Student>forTableColumn("Remove", (Student p) -> {
+        removeCol.setCellFactory(ActionButtonTableCell.<Student>forTableColumn("Remove", false, (Student p) -> {
             int selectedStudentsIndex = 0;
 
             for(int i = 0; i<=students.size(); i++){
