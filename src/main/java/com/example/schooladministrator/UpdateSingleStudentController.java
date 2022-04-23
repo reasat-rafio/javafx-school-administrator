@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class UpdateSingleStudentController {
@@ -36,6 +37,11 @@ public class UpdateSingleStudentController {
     private Label birthdateErrMsg;
 
     public void init(Student std) {
-
+        firstName.setText(std.getFirstName());
+        lastName.setText(std.getLastName());
+        studentId.setText(std.getStudentId());
+        studentAge.setText(std.getStudentAge());
+        studentClass.setText(std.getStudentAge());
+        birthdate.setValue(LocalDate.parse(String.valueOf(std.getBirthdate())));
     }
 }

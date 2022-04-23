@@ -1,6 +1,7 @@
 package com.example.schooladministrator.Student;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class Student implements Serializable {
     private String firstName;
