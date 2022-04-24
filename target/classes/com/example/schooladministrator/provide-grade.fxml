@@ -46,9 +46,10 @@
             <TextField fx:id="finalNumber" layoutX="10.0" layoutY="10.0" prefHeight="131.0" prefWidth="793.0" promptText="Final" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <ComboBox fx:id="subjectSelector" layoutX="301.0" layoutY="208.0" onAction="#selectSubjectAction" prefHeight="26.0" prefWidth="405.0" />
-      <Label layoutX="209.0" layoutY="212.0" text="Select Subject" />
+      <ComboBox fx:id="subjectSelector" layoutX="194.0" layoutY="208.0" onAction="#selectSubjectAction" prefHeight="26.0" prefWidth="405.0" />
+      <Label layoutX="82.0" layoutY="212.0" text="Select Subject" />
       <Button layoutX="815.0" layoutY="431.0" mnemonicParsing="false" onAction="#onSubmitAction" text="Submit" />
       <Button layoutX="740.0" layoutY="431.0" mnemonicParsing="false" onAction="#redirectToHomeAction" text="Home" />
+      <Button fx:id="insertBtn" layoutX="750.0" layoutY="208.0" mnemonicParsing="false" onAction="#onInsertAction" text="Insert Number" />
    </children>
 </AnchorPane>
