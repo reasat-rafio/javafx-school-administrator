@@ -36,6 +36,8 @@ public class ProvideGradeController implements Initializable {
     Student student;
     ArrayList<Subject> result = new ArrayList<Subject>();
 
+    ArrayList<Student> allStudents;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> list = FXCollections.observableArrayList("Math", "Science" , "English");
@@ -48,10 +50,12 @@ public class ProvideGradeController implements Initializable {
         ID.setText(student.getStudentId());
         subjectSelector.getSelectionModel().selectFirst();
         insertBtn.setText("Insert " + subjectSelector.getSelectionModel().getSelectedItem() + " Numbers");
+        allStudents = FileIO.getAllTheStudents();
     }
 
     public void selectSubjectAction(ActionEvent event) {
         String selectedSubject = subjectSelector.getSelectionModel().getSelectedItem();
+        insertBtn.setText("Insert " + selectedSubject + " Numbers");
         int updateIndex = 0;
         if(result.size() > 0) {
             for (int i = 0; i < result.size(); i++) {
@@ -114,11 +118,16 @@ public class ProvideGradeController implements Initializable {
     }
 
     public void onSubmitAction(ActionEvent e) {
-        for(Subject s:result){
-            System.out.println(s.toString());
-        }
-        System.out.println("----");
+        int selectedStudentIndex = 0;
 
+        for(int i = 0; i < allStudents.size(); i++) {
+            if(Objects.equals(allStudents.get(i).getStudentId(), student.getStudentId())){
+                selectedStudentIndex = i;
+            }
+        }
+
+        allStudents.get(selectedStudentIndex).setResult(result);
+        System.out.println(allStudents.get(selectedStudentIndex).toString());
     }
 
     public void redirectToHomeAction(ActionEvent e){}

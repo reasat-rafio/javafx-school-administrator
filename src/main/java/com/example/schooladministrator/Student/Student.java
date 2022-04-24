@@ -1,9 +1,14 @@
 package com.example.schooladministrator.Student;
 
+import com.example.schooladministrator.Modules.Subject;
+
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Student implements Serializable {
+    private static final long serialVersionUID = 652968098267757690L;
+
     private String firstName;
     private String lastName;
     private String studentId;
@@ -11,7 +16,7 @@ public class Student implements Serializable {
     private String studentClass;
     private String birthdate;
     private String cgpa;
-
+    private ArrayList<Subject> result;
 
 
     public Student(String firstName, String lastName, String studentId, String studentAge, String studentClass, String birthdate) {
@@ -21,6 +26,14 @@ public class Student implements Serializable {
         this.studentAge = studentAge;
         this.studentClass = studentClass;
         this.birthdate = birthdate;
+    }
+
+    public ArrayList<Subject> getResult() {
+        return result;
+    }
+
+    public void setResult(ArrayList<Subject> result) {
+        this.result = result;
     }
 
     public String getFirstName() {
@@ -79,6 +92,7 @@ public class Student implements Serializable {
         this.cgpa = cgpa;
     }
 
+
     @Override
     public String toString() {
         return "{" +
@@ -88,6 +102,8 @@ public class Student implements Serializable {
                 ", studentAge='" + studentAge + '\'' +
                 ", studentClass='" + studentClass + '\'' +
                 ", birthdate='" + birthdate + '\'' +
-                '}' + "\n";
+                ", cgpa='" + cgpa + '\'' +
+                ", result=" + result +
+                '}';
     }
 }

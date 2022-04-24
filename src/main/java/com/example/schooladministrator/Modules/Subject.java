@@ -1,6 +1,10 @@
 package com.example.schooladministrator.Modules;
 
-public class Subject {
+import java.io.Serializable;
+
+public class Subject implements Serializable {
+    private static final long serialVersionUID = 6529685098267757690L;
+
     String name;
     int midNumber;
     int finalNumber;

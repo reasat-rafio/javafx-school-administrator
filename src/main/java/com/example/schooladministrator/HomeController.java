@@ -1,5 +1,6 @@
 package com.example.schooladministrator;
 
+import com.example.schooladministrator.Student.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

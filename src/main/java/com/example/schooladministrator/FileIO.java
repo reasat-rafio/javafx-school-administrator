@@ -16,9 +16,7 @@ public class FileIO {
     }
 
     public static  void saveStudents (Student std) throws IOException, ClassNotFoundException {
-
         boolean studentExist = false;
-        std.setCgpa("null");
         try{
             ArrayList<Student> students =  getAllTheStudents();
 
@@ -48,6 +46,7 @@ public class FileIO {
             System.out.println("Object has been serialized");
         }
     }   catch(IOException ex) {
+            ex.printStackTrace();
             System.out.println("IOException is caught");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
