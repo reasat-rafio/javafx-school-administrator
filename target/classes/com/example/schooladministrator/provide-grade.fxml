@@ -42,14 +42,14 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="midNumber" prefHeight="105.0" prefWidth="793.0" promptText="Mid" />
-            <TextField fx:id="finalNumber" layoutX="10.0" layoutY="10.0" prefHeight="131.0" prefWidth="793.0" promptText="Final" GridPane.rowIndex="1" />
+            <TextField fx:id="midNumber" prefHeight="105.0" prefWidth="793.0" promptText="Mid (Out of 40)" />
+            <TextField fx:id="finalNumber" layoutX="10.0" layoutY="10.0" prefHeight="131.0" prefWidth="793.0" promptText="Final (Out of 60)" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <ComboBox fx:id="subjectSelector" layoutX="194.0" layoutY="208.0" onAction="#selectSubjectAction" prefHeight="26.0" prefWidth="405.0" />
       <Label layoutX="82.0" layoutY="212.0" text="Select Subject" />
       <Button layoutX="815.0" layoutY="431.0" mnemonicParsing="false" onAction="#onSubmitAction" text="Submit" />
-      <Button layoutX="740.0" layoutY="431.0" mnemonicParsing="false" onAction="#redirectToHomeAction" text="Home" />
+      <Button layoutX="740.0" layoutY="431.0" mnemonicParsing="false" onAction="#redirectToHomeAction" text="Back" />
       <Button fx:id="insertBtn" layoutX="750.0" layoutY="208.0" mnemonicParsing="false" onAction="#onInsertAction" text="Insert Number" />
    </children>
 </AnchorPane>

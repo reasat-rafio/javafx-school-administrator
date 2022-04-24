@@ -9,18 +9,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="644.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.schooladministrator.StudentListController">
+<AnchorPane prefHeight="660.0" prefWidth="1031.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.schooladministrator.StudentListController">
    <children>
-      <TableView fx:id="studentTable" layoutX="23.0" layoutY="154.0" prefHeight="430.0" prefWidth="984.0">
+      <TableView fx:id="studentTable" layoutX="23.0" layoutY="154.0" prefHeight="396.0" prefWidth="987.0">
         <columns>
           <TableColumn fx:id="idCol" maxWidth="70.0" prefWidth="70.0" text="Id" />
-          <TableColumn fx:id="nameCol" prefWidth="229.0" text="Name" />
+          <TableColumn fx:id="nameCol" prefWidth="122.0" text="First Name" />
+            <TableColumn fx:id="nameCol2" prefWidth="143.0" text="Last Name" />
             <TableColumn fx:id="birthCol" prefWidth="110.0" text="Birdth Date" />
-            <TableColumn fx:id="ageCol" prefWidth="112.0" text="Age" />
-            <TableColumn fx:id="classCol" prefWidth="98.0" text="Class" />
-            <TableColumn fx:id="cgpaCol" prefWidth="136.0" text="CGPA" />
-            <TableColumn fx:id="editCol" prefWidth="101.0" text="Edit" />
-            <TableColumn fx:id="removeCol" prefWidth="124.0" text="Remove" />
+            <TableColumn fx:id="ageCol" prefWidth="88.0" text="Age" />
+            <TableColumn fx:id="classCol" prefWidth="100.0" text="Class" />
+            <TableColumn fx:id="cgpaCol" prefWidth="107.0" text="CGPA" />
+            <TableColumn fx:id="editCol" prefWidth="120.0" text="Edit" />
+            <TableColumn fx:id="removeCol" prefWidth="126.0" text="Remove" />
         </columns>
       </TableView>
       <HBox layoutX="23.0" layoutY="58.0" prefHeight="100.0" prefWidth="200.0" />

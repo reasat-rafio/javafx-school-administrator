@@ -78,7 +78,7 @@ public class UpdateSingleGeneralInfoController {
 
         allStudents.set(selectedStudentIndex,student);
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studnet-list.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("student-list.fxml")));
         Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         String css = Objects.requireNonNull(this.getClass().getResource("style.css")).toExternalForm();

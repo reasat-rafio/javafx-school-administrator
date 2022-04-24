@@ -32,7 +32,7 @@ public class HomeController {
     }
 
     public void redirectToUpdateInfoPage(ActionEvent e) throws IOException {
-        sceneSwitcher("studnet-list.fxml", e);
+        sceneSwitcher("student-list.fxml", e);
     }
     public void redirectToViewInfoPage(ActionEvent e) throws IOException {
         sceneSwitcher("view-info.fxml", e);

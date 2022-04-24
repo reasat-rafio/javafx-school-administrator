@@ -36,6 +36,8 @@ public class StudentListController implements Initializable {
     @FXML
     private TableColumn<Student, String> classCol;
     @FXML
+    private TableColumn<Student, String> nameCol2;
+    @FXML
     private TableColumn<Student, String> cgpaCol;
 
     @FXML
@@ -64,11 +66,11 @@ public class StudentListController implements Initializable {
     private  void loadData() throws IOException, ClassNotFoundException {
         idCol.setCellValueFactory(new PropertyValueFactory<Student, String>("studentId"));
         nameCol.setCellValueFactory(new PropertyValueFactory<Student, String>("firstName"));
+        nameCol2.setCellValueFactory(new PropertyValueFactory<Student, String>("lastName"));
         birthCol.setCellValueFactory(new PropertyValueFactory<Student, String>("birthdate"));
         ageCol.setCellValueFactory(new PropertyValueFactory<Student, String>("studentAge"));
         classCol.setCellValueFactory(new PropertyValueFactory<Student, String>("studentClass"));
         cgpaCol.setCellValueFactory(new PropertyValueFactory<Student, String>("cgpa"));
-//        actionCol.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
 
         editCol.setCellFactory(ActionButtonTableCell.<Student>forTableColumn("Edit", true, (Student p) -> {
             return p;

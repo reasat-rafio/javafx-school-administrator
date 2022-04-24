@@ -6,12 +6,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -117,8 +122,9 @@ public class ProvideGradeController implements Initializable {
 
     }
 
-    public void onSubmitAction(ActionEvent e) {
+    public void onSubmitAction(ActionEvent e) throws IOException {
         int selectedStudentIndex = 0;
+        int totalMarks = 0;
 
         for(int i = 0; i < allStudents.size(); i++) {
             if(Objects.equals(allStudents.get(i).getStudentId(), student.getStudentId())){
@@ -127,8 +133,43 @@ public class ProvideGradeController implements Initializable {
         }
 
         allStudents.get(selectedStudentIndex).setResult(result);
+
+        for(int i = 0; i < allStudents.get(selectedStudentIndex).getResult().size(); i++){
+            totalMarks += allStudents.get(selectedStudentIndex).getResult().get(i).getMidNumber()
+                    +  allStudents.get(selectedStudentIndex).getResult().get(i).getFinalNumber();
+        }
+
+        if(totalMarks / 3 >= 80 ){
+            allStudents.get(selectedStudentIndex).setCgpa("A");
+        } else if(totalMarks >60 && totalMarks < 80){
+            allStudents.get(selectedStudentIndex).setCgpa("B");
+        } else if(totalMarks >50 && totalMarks <= 60){
+            allStudents.get(selectedStudentIndex).setCgpa("C");
+        } else if(totalMarks >40 && totalMarks <= 50){
+            allStudents.get(selectedStudentIndex).setCgpa("D");
+        } else {
+            allStudents.get(selectedStudentIndex).setCgpa("F");
+        }
+
+        FileIO.saveStudents(allStudents);
+
         System.out.println(allStudents.get(selectedStudentIndex).toString());
+
+        System.out.println(totalMarks);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Grade Updated");
+        alert.showAndWait();
+
     }
 
-    public void redirectToHomeAction(ActionEvent e){}
+    public void redirectToHomeAction(ActionEvent e) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("student-list.fxml")));
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        String css = Objects.requireNonNull(this.getClass().getResource("style.css")).toExternalForm();
+        scene.getStylesheets().add(css);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

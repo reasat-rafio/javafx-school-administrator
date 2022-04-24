@@ -9,10 +9,20 @@ public class Subject implements Serializable {
     int midNumber;
     int finalNumber;
 
+    String grade;
+
     public Subject(String name, int midNumber, int finalNumber) {
         this.name = name;
         this.midNumber = midNumber;
         this.finalNumber = finalNumber;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 
     public String getName() {
