@@ -11,20 +11,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import javax.security.auth.callback.Callback;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class UpdateStudentController implements Initializable {
+public class StudentListController implements Initializable {
     @FXML
     private TableView<Student> studentTable;
     @FXML
@@ -50,7 +48,7 @@ public class UpdateStudentController implements Initializable {
 
     ObservableList<Student> list = FXCollections.observableArrayList();
 
-    public UpdateStudentController() throws IOException, ClassNotFoundException {
+    public StudentListController() throws IOException, ClassNotFoundException {
         this.students = FileIO.getAllTheStudents();
     }
 

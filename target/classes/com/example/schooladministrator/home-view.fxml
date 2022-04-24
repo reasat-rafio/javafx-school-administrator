@@ -31,7 +31,7 @@
            <children>
                <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="280.0" prefWidth="483.0" style="-fx-background-color: #fff;" stylesheets="@../java/com/example/schooladministrator/style.css" text="Home" />
                <Button contentDisplay="TOP" layoutX="11.0" layoutY="11.0" mnemonicParsing="false" onAction="#redirectToViewInfoPage" prefHeight="280.0" prefWidth="483.0" style="-fx-background-color: #fff;" stylesheets="@../java/com/example/schooladministrator/style.css" text="View Info" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-               <Button contentDisplay="TOP" layoutX="11.0" layoutY="11.0" mnemonicParsing="false" onAction="#redirectToUpdateInfoPage" prefHeight="280.0" prefWidth="483.0" style="-fx-background-color: #fff;" stylesheets="@../java/com/example/schooladministrator/style.css" text="Update Info" GridPane.rowIndex="1" />
+               <Button contentDisplay="TOP" layoutX="11.0" layoutY="11.0" mnemonicParsing="false" onAction="#redirectToUpdateInfoPage" prefHeight="280.0" prefWidth="483.0" style="-fx-background-color: #fff;" stylesheets="@../java/com/example/schooladministrator/style.css" text="Student List" GridPane.rowIndex="1" />
                <Button contentDisplay="TOP" layoutX="397.0" layoutY="11.0" mnemonicParsing="false" onAction="#redirectToAddStudentPage" prefHeight="280.0" prefWidth="483.0" style="-fx-background-color: #fff;" stylesheets="@../java/com/example/schooladministrator/style.css" text="Add New Student" GridPane.columnIndex="1" />
            </children>
        </GridPane>

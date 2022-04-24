@@ -17,7 +17,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class UpdateSingleStudentController {
+public class UpdateSingleGeneralInfoController {
     @FXML
     private TextField firstName;
     @FXML
@@ -78,7 +78,7 @@ public class UpdateSingleStudentController {
 
         allStudents.set(selectedStudentIndex,student);
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("update-info.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studnet-list.fxml")));
         Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         String css = Objects.requireNonNull(this.getClass().getResource("style.css")).toExternalForm();
