@@ -39,8 +39,18 @@ public class EditStudentController {
         controller.init(student);
     }
 
-    public void redirectToProvideGradeAction(ActionEvent e){
+    public void redirectToProvideGradeAction(ActionEvent e) throws IOException, ClassNotFoundException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("provide-grade.fxml"));
+        Parent root = (Parent) loader.load();
+        ProvideGradeController controller = loader.getController();
 
+        Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        String css = Objects.requireNonNull(this.getClass().getResource("style.css")).toExternalForm();
+        scene.getStylesheets().add(css);
+        stage.setScene(scene);
+        stage.show();
+        controller.init(student);
     }
 
 }
