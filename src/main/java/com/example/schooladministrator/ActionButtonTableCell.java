@@ -48,10 +48,10 @@ public class ActionButtonTableCell<S> extends TableCell<S, Button> {
     }
 
     public S goToEditPage(ActionEvent e) throws IOException, ClassNotFoundException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("update-student-general-info.fxml"));
-        Parent root = (Parent) loader.load();
-        UpdateSingleGeneralInfoController controller = loader.getController();
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("edit-student.fxml"));
+        Parent root = (Parent) loader.load();
+        EditStudentController controller = loader.getController();
 
         Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
