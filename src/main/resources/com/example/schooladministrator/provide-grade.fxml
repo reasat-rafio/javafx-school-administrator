@@ -33,7 +33,7 @@
             </Text>
          </children>
       </Pane>
-      <GridPane layoutX="82.0" layoutY="293.0" prefHeight="119.0" prefWidth="793.0" style="-fx-vgap: 20;">
+      <GridPane layoutX="191.0" layoutY="293.0" prefHeight="119.0" prefWidth="684.0" style="-fx-vgap: 20;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -42,7 +42,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="midNumber" prefHeight="105.0" prefWidth="793.0" promptText="Mid (Out of 40)" />
+            <TextField fx:id="midNumber" prefHeight="105.0" prefWidth="739.0" promptText="Mid (Out of 40)" />
             <TextField fx:id="finalNumber" layoutX="10.0" layoutY="10.0" prefHeight="131.0" prefWidth="793.0" promptText="Final (Out of 60)" GridPane.rowIndex="1" />
          </children>
       </GridPane>
@@ -51,5 +51,7 @@
       <Button layoutX="815.0" layoutY="431.0" mnemonicParsing="false" onAction="#onSubmitAction" text="Submit" />
       <Button layoutX="740.0" layoutY="431.0" mnemonicParsing="false" onAction="#redirectToHomeAction" text="Back" />
       <Button fx:id="insertBtn" layoutX="750.0" layoutY="208.0" mnemonicParsing="false" onAction="#onInsertAction" text="Insert Number" />
+      <Label layoutX="83.0" layoutY="311.0" text="Mid (out of 40)" />
+      <Label layoutX="80.0" layoutY="380.0" text="Final (out of 60)" />
    </children>
 </AnchorPane>

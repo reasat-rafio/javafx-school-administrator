@@ -78,6 +78,21 @@ public class UpdateSingleGeneralInfoController {
 
         allStudents.set(selectedStudentIndex,student);
 
+        FileIO.saveStudents(allStudents);
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("student-list.fxml")));
+        Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        String css = Objects.requireNonNull(this.getClass().getResource("style.css")).toExternalForm();
+        scene.getStylesheets().add(css);
+        stage.setScene(scene);
+        stage.show();
+
+
+
+    }
+
+    public void onGoBack (ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("student-list.fxml")));
         Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -86,4 +101,5 @@ public class UpdateSingleGeneralInfoController {
         stage.setScene(scene);
         stage.show();
     }
+
 }

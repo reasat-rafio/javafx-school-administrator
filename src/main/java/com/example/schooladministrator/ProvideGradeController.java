@@ -38,6 +38,7 @@ public class ProvideGradeController implements Initializable {
     @FXML
     private Button insertBtn;
 
+    boolean isExist = false;
     Student student;
     ArrayList<Subject> result = new ArrayList<Subject>();
 
@@ -56,6 +57,16 @@ public class ProvideGradeController implements Initializable {
         subjectSelector.getSelectionModel().selectFirst();
         insertBtn.setText("Insert " + subjectSelector.getSelectionModel().getSelectedItem() + " Numbers");
         allStudents = FileIO.getAllTheStudents();
+
+        if(student.getCgpa() != null){
+            isExist = true;
+        }
+
+        if(isExist){
+            midNumber.setText(String.valueOf(student.getResult().get(0).getMidNumber()));
+            finalNumber.setText(String.valueOf(student.getResult().get(0).getFinalNumber()));
+        }
+
     }
 
     public void selectSubjectAction(ActionEvent event) {
@@ -71,14 +82,20 @@ public class ProvideGradeController implements Initializable {
                     updateIndex = -1;
                 }
                 }
-            if(updateIndex >= 0){
-                System.out.println(result.get(updateIndex));
+
+            if(isExist){
+                midNumber.setText(String.valueOf(student.getResult().get(updateIndex).getMidNumber()));
+                finalNumber.setText(String.valueOf(student.getResult().get(updateIndex).getMidNumber()));
+            }
+
+//            if(updateIndex >= 0){
+//                System.out.println(result.get(updateIndex));
 //                midNumber.setText(String.valueOf(result.get(updateIndex).getMidNumber()));
 //                finalNumber.setText(String.valueOf(result.get(updateIndex).getFinalNumber()));
-            } else {
+//            } else {
 //                midNumber.setText("");
 //                finalNumber.setText("");
-            }
+//            }
         }
 
 
@@ -139,23 +156,23 @@ public class ProvideGradeController implements Initializable {
                     +  allStudents.get(selectedStudentIndex).getResult().get(i).getFinalNumber();
         }
 
-        if(totalMarks / 3 >= 80 ){
+
+        int avgMarks = totalMarks / 3;
+
+        if(avgMarks >= 80 ){
             allStudents.get(selectedStudentIndex).setCgpa("A");
-        } else if(totalMarks >60 && totalMarks < 80){
+        } else if(avgMarks > 60){
             allStudents.get(selectedStudentIndex).setCgpa("B");
-        } else if(totalMarks >50 && totalMarks <= 60){
+        } else if(avgMarks > 50){
             allStudents.get(selectedStudentIndex).setCgpa("C");
-        } else if(totalMarks >40 && totalMarks <= 50){
+        } else if(avgMarks > 40){
             allStudents.get(selectedStudentIndex).setCgpa("D");
         } else {
             allStudents.get(selectedStudentIndex).setCgpa("F");
         }
+        System.out.println(totalMarks / 3);
 
         FileIO.saveStudents(allStudents);
-
-        System.out.println(allStudents.get(selectedStudentIndex).toString());
-
-        System.out.println(totalMarks);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText("Grade Updated");
