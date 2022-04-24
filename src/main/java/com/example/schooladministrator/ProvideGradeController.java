@@ -44,12 +44,33 @@ public class ProvideGradeController implements Initializable {
         name.setText(student.getFirstName() + " " + student.getLastName());
         ID.setText(student.getStudentId());
         subjectSelector.getSelectionModel().selectFirst();
-
-//       result.add(new Subject("Math", 0,0));
-//       result.add(new Subject())
     }
 
-    public void selectSubjectAction(ActionEvent event) {}
+    public void selectSubjectAction(ActionEvent event) {
+        String selectedSubject = subjectSelector.getSelectionModel().getSelectedItem();
+        int updateIndex = 0;
+        if(result.size() > 0) {
+            for (int i = 0; i < result.size(); i++) {
+                if(Objects.equals(selectedSubject, result.get(i).getName())) {
+                    updateIndex = i;
+                    }
+                else {
+                    updateIndex = -1;
+                }
+                }
+            if(updateIndex >= 0){
+                System.out.println(result.get(updateIndex));
+                midNumber.setText(String.valueOf(result.get(updateIndex).getMidNumber()));
+                finalNumber.setText(String.valueOf(result.get(updateIndex).getFinalNumber()));
+            } else {
+                midNumber.setText("");
+                finalNumber.setText("");
+            }
+        }
+
+
+        System.out.println(subjectSelector.getSelectionModel().getSelectedItem());
+    }
 
     public void onSubmitAction(ActionEvent e) {
 
